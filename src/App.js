@@ -46,7 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Button color="secondary">Click Me <MoodIcon color="primary" /></Button>
+        <Button color="secondary">Click Me Wow <MoodIcon color="primary" /></Button>
         
       </div>
     )
