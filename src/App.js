@@ -1,53 +1,56 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import MoodIcon from '@material-ui/icons/Mood';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import './App.css';
 
-// class MyForm extends Component {
-//   constructor() {
-//     super()
-//     this.state = {
-//       inputValue: ""
-//     }
-//   }
+class Home extends Component {
+  render() {
+    return (
+      <h2>Home</h2>
+    )
+  }
+}
 
-//   componentDidUpdate(prevProps, prevState) {
-//     if(this.state.inputValue !== prevState.inputValue) {
-//       console.log("State CHANGEROO")
-//     }    
-//   }
+class About extends Component {
+  render() {
+    return (
+      <h2>About</h2>
+    )
+  }
+}
 
-//   handleChange = (event) => {
-//     this.setState({
-//       inputValue: event.target.value
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <form>
-//         <label>
-//           Name:
-//           <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-//         </label>
-//         <p> {this.state.inputValue} </p>
-//       </form>
-//     )
-//   }
-// }
+class Store extends Component {
+  render() {
+    return (
+      <h2>Store</h2>
+    )
+  }
+}
 
 class App extends Component {
   constructor() {
     super()
   } 
-
+// The "exact" in the routing option for Home is needed because the slash is included in all of the Routes so you need to specify so it doesnt display Home always.
   render() {
     return (
       <div className="App">
-        <Button color="secondary">Click Me Wow <MoodIcon color="primary" /></Button>
-        
+        <Router>
+          <div>
+            <nav>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/store">Store</Link></li>
+              </ul>
+            </nav>
+
+            <Route exact path="/" component={ Home } /> 
+            <Route path="/about" component={ About } />
+            <Route path="/store" component={ Store } />
+          </div>
+        </Router>
       </div>
     )
   }
