@@ -28,10 +28,34 @@ class Store extends Component {
   }
 }
 
+const users = [
+  { name: 'Mark' },
+  { name: 'Marin' },
+  { name: 'Lauren' }
+] 
+
+const UsersPage = () => {
+  return (
+    <div>
+      <h3>Users Page</h3>
+      { 
+        users.map((user, index) => {
+          return (
+            <h5 key={ index }>
+              <Link to={ `/user/${index}` }>{ user.name }'s Page</Link>
+            </h5>
+          )
+        })
+      }
+    </div>
+  )
+}
+
 class App extends Component {
   constructor() {
     super()
   } 
+ 
 // The "exact" in the routing option for Home is needed because the slash is included in all of the Routes so you need to specify so it doesnt display Home always.
   render() {
     return (
@@ -43,12 +67,14 @@ class App extends Component {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/store">Store</Link></li>
+                <li><Link to="/users">Users</Link></li>
               </ul>
             </nav>
 
             <Route exact path="/" component={ Home } /> 
             <Route path="/about" component={ About } />
             <Route path="/store" component={ Store } />
+            <Route path="/users" component={ UsersPage } />
           </div>
         </Router>
       </div>
