@@ -30,7 +30,7 @@ class Store extends Component {
 
 const users = [
   { name: 'Mark' },
-  { name: 'Marin' },
+  { name: 'Maren' },
   { name: 'Lauren' }
 ] 
 
@@ -47,6 +47,16 @@ const UsersPage = () => {
           )
         })
       }
+    </div>
+  )
+}
+
+const UserPage = ({ match }) => {
+  const { params: { userId } } = match;
+  return(
+    <div>
+      <p>User ID: { userId }</p>
+      <p>User Name: { users[userId].name }</p>
     </div>
   )
 }
@@ -75,6 +85,8 @@ class App extends Component {
             <Route path="/about" component={ About } />
             <Route path="/store" component={ Store } />
             <Route path="/users" component={ UsersPage } />
+
+            <Route path="/user/:userId" component={ UserPage }/>
           </div>
         </Router>
       </div>
